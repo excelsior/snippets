@@ -11,11 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701151313) do
+ActiveRecord::Schema.define(version: 20150701173936) do
 
   create_table "snippets", force: :cascade do |t|
-    t.string   "body",       limit: 8192, null: false
-    t.datetime "created_at",              null: false
+    t.string   "body",       limit: 8192,                 null: false
+    t.datetime "created_at",                              null: false
+    t.boolean  "private",                 default: false, null: false
+    t.string   "slug"
   end
 
 end

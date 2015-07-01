@@ -8,6 +8,16 @@ describe Snippet do
     should validate_presence_of(:body)
   end
 
+  it 'sets slug for private snippets' do
+    snippet = Snippet.create!(body: 'Public snippet')
+    expect(snippet.slug).to eq(nil)
+
+    slug = 'private-snippet-slug'
+    allow(SecureRandom).to receive(:hex).and_return(slug)
+    snippet = Snippet.create(body: 'Private snippet', private: true)
+    expect(snippet.slug).to eq(slug)
+  end
+
   describe '#truncated_body' do
     it do
       snippet = Snippet.new

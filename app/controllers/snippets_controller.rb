@@ -1,6 +1,6 @@
 class SnippetsController < ApplicationController
   def index
-    @snippets = Snippet.order(created_at: :desc).page(params[:page]).per(20)
+    @snippets = Snippet.only_public.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def new
@@ -8,7 +8,7 @@ class SnippetsController < ApplicationController
   end
 
   def create
-    snippet_params = params.require(:snippet).permit(:body)
+    snippet_params = params.require(:snippet).permit(:body, :private)
     @snippet = Snippet.new(snippet_params)
 
     if @snippet.save
@@ -19,6 +19,7 @@ class SnippetsController < ApplicationController
   end
 
   def show
-    @snippet = Snippet.find(params[:id])
+    @snippet = Snippet.find_by_slug(params[:id]) || Snippet.only_public.find_by_id(params[:id])
+    raise ActiveRecord::RecordNotFound unless @snippet
   end
 end

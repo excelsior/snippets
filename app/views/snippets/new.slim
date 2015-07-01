@@ -7,4 +7,10 @@
 
     == form_for @snippet do |f|
       == f.text_area :body, placeholder: 'Maximum 8192 characters are allowed', rows: 15
-      == f.submit 'Save', class: 'button', name: nil
+
+      .clearfix
+        .left
+          == f.check_box :private
+          == f.label :private, 'Private?'
+
+        == f.submit 'Save', class: 'button right', name: nil
