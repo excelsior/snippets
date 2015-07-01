@@ -13,6 +13,7 @@ gem 'seedbank'
 
 # Views
 gem 'foundation-rails'
+gem 'kaminari'
 gem 'slim-rails'
 
 group :development, :test do

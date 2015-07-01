@@ -1,6 +1,12 @@
+- pagination = paginate @snippets
+
 .row
   .column.small-12
     h2 Snippets
+
+    == page_entries_info @snippets
+
+    == pagination
 
     ul.unstyled
       - @snippets.each do |snippet|
@@ -8,3 +14,5 @@
           h3 ##{snippet.id}
           code.snippet__body= snippet.truncated_body
           small Created at #{snippet.created_at}
+
+    == pagination
