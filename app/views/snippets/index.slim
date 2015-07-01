@@ -1,0 +1,10 @@
+.row
+  .column.small-12
+    h2 Snippets
+
+    ul.unstyled
+      - @snippets.each do |snippet|
+        li.snippet
+          h3 ##{snippet.id}
+          code.snippet__body= snippet.truncated_body
+          small Created at #{snippet.created_at}

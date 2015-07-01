@@ -11,6 +11,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'populator'
 gem 'seedbank'
 
+# Views
+gem 'foundation-rails'
+gem 'slim-rails'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda'
