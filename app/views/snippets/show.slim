@@ -1,0 +1,8 @@
+.row
+  .column.small-12
+    h2 Snippet ##{@snippet.id}
+    .snippet__body= @snippet.body
+
+    label.snippet__shareLink
+      ' Share this
+      == text_field_tag '', snippet_url(@snippet)

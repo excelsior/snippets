@@ -12,9 +12,13 @@ class SnippetsController < ApplicationController
     @snippet = Snippet.new(snippet_params)
 
     if @snippet.save
-      redirect_to :root, notice: 'Snippet was created successfully.'
+      redirect_to @snippet, notice: 'Snippet was created successfully.'
     else
       render :new
     end
+  end
+
+  def show
+    @snippet = Snippet.find(params[:id])
   end
 end

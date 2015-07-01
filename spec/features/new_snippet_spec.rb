@@ -15,11 +15,12 @@ describe 'New snippet' do
     fill_in 'snippet_body', with: 'Yet another snippet'
     click_button 'Save'
 
-    expect(current_path).to eq('/')
+    snippet = Snippet.last
+    expect(current_path).to eq("/snippets/#{snippet.id}")
     expect(page).to have_selector('.success', text: 'Snippet was created successfully.')
 
-    snippet = Snippet.last
-    expect(page).to have_selector('h3', text: "##{snippet.id}")
-    expect(page).to have_selector('.snippet__body', text: snippet.truncated_body)
+    expect(page).to have_selector('h2', text: "##{snippet.id}")
+    expect(page).to have_selector('.snippet__body', text: snippet.body)
+    expect(find('.snippet__shareLink input').value).to eq("http://www.example.com/snippets/#{snippet.id}")
   end
 end

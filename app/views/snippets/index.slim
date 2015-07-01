@@ -11,8 +11,9 @@
     ul.unstyled
       - @snippets.each do |snippet|
         li.snippet
-          h3 ##{snippet.id}
-          code.snippet__body= snippet.truncated_body
-          small Created at #{snippet.created_at}
+          = link_to snippet do
+            h3 ##{snippet.id}
+            code.snippet__body= snippet.truncated_body
+            small Created at #{snippet.created_at}
 
     == pagination
