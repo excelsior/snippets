@@ -1,0 +1,7 @@
+- flash.to_hash.slice('alert', 'notice').each do |name, message|
+  - if message.present?
+    - klass = name == 'alert' ? 'alert' : 'success'
+    .row
+      .column.small-12
+        .alert-box class=klass
+          == message

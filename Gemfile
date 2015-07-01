@@ -17,6 +17,7 @@ gem 'kaminari'
 gem 'slim-rails'
 
 group :development, :test do
+  gem 'capybara'
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda'
 end

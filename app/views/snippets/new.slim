@@ -1,0 +1,10 @@
+.row
+  .column.small-12
+    h2 New Snippet
+
+    - if @snippet.errors.any?
+      .alert-box.alert= @snippet.errors.full_messages.first
+
+    == form_for @snippet do |f|
+      == f.text_area :body, placeholder: 'Maximum 8192 characters are allowed', rows: 15
+      == f.submit 'Save', class: 'button', name: nil
