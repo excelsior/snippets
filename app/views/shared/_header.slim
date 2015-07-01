@@ -6,3 +6,9 @@ nav.top-bar data-topbar='' role='navigation'
   .top-bar-section
     ul.left
       li.active= link_to 'Create Snippet', [:new, :snippet]
+
+    ul.right
+      li.has-form
+        = form_tag :root, class: 'row collapse', method: :get do
+          .column.small-9= text_field_tag :q, params[:q], placeholder: 'Search'
+          .column.small-3= submit_tag 'Go', class: 'alert button expand', name: nil

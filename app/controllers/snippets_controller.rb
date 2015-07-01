@@ -1,6 +1,13 @@
 class SnippetsController < ApplicationController
   def index
-    @snippets = Snippet.only_public.order(created_at: :desc).page(params[:page]).per(20)
+    @snippets = Snippet.only_public
+
+    if @query = params[:q]
+      @query.downcase!
+      @snippets.where!("LOWER(body) LIKE ?", "%#{@query}%")
+    end
+
+    @snippets = @snippets.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def new

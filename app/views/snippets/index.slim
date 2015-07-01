@@ -2,7 +2,11 @@
 
 .row
   .column.small-12
-    h2 Snippets
+    h2
+      - if @query
+        ' Search results for '#{@query}'
+      - else
+        ' Snippets
 
     == page_entries_info @snippets
 
